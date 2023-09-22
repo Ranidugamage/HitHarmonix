@@ -7,18 +7,16 @@ async function fetchTracksFromPlaylist(playlistId, accessToken) {
       {
         headers: {
           Authorization: `Bearer ${accessToken}`,
+          limit: 50,
         },
       }
     );
 
-    const playlistDetails = {
-      playlistId,
-      tracks: response.data.items.map((item) => ({
-        trackId: item.track.id,
-        trackName: item.track.name,
-        artistName: item.track.artists[0].name,
-      })),
-    };
+    const playlistDetails = response.data.items.map((item) => ({
+      trackId: item.track.id,
+      trackName: item.track.name,
+      artistName: item.track.artists[0].name,
+    }));
 
     return playlistDetails;
   } catch (error) {
