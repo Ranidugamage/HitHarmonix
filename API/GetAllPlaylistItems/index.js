@@ -12,6 +12,8 @@ async function fetchTracksFromPlaylist(playlistId, accessToken) {
       }
     );
 
+
+
     const playlistDetails = response.data.items.map((item) => ({
       trackId: item.track.id,
       trackName: item.track.name,
